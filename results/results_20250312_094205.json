@@ -1,0 +1,32 @@
+{
+  "name": "dhruveeel",
+  "position": "AI and Web Developer Intern",
+  "email": "dhruvilh@ualberta.ca",
+  "variables": [
+    "gas",
+    "tank",
+    "hey"
+  ],
+  "dependencies": [
+    {
+      "source": "gas",
+      "target": "tank"
+    },
+    {
+      "source": "gas",
+      "target": "hey"
+    },
+    {
+      "source": "tank",
+      "target": "gas"
+    },
+    {
+      "source": "tank",
+      "target": "hey"
+    },
+    {
+      "source": "hey",
+      "target": "gas"
+    }
+  ]
+}

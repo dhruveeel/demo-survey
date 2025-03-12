@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variable Dependency Analysis</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="app-header">
+            <h1><i class="fas fa-project-diagram"></i> Variable Dependency Analysis</h1>
+            <p>Visualize relationships between variables in your system</p>
+        </div>
+        
+        <div class="progress-bar">
+            <div class="progress-step active" id="step1">1</div>
+            <div class="progress-line"></div>
+            <div class="progress-step" id="step2">2</div>
+            <div class="progress-line"></div>
+            <div class="progress-step" id="step3">3</div>
+        </div>
+
+        <!-- Step 1: User Information -->
+        <div class="step-panel active" id="panel1">
+            <h2>User Information</h2>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" placeholder="Enter your name">
+            </div>
+            <div class="form-group">
+                <label for="position">Position</label>
+                <input type="text" id="position" placeholder="Enter your position">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Enter your email">
+            </div>
+            <div class="button-group">
+                <button class="btn primary" id="next-to-step2">Next <i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+
+        <!-- Step 2: Variables Selection -->
+        <div class="step-panel" id="panel2">
+            <h2>What are the variables?</h2>
+            <div class="variables-container">
+                <div class="variable-list" id="variable-list">
+                    <!-- Default 5 variables -->
+                    <div class="variable-item">
+                        <input type="text" placeholder="Variable 1" class="variable-input">
+                        <button class="btn delete-variable"><i class="fas fa-trash"></i></button>
+                    </div>
+                    <div class="variable-item">
+                        <input type="text" placeholder="Variable 2" class="variable-input">
+                        <button class="btn delete-variable"><i class="fas fa-trash"></i></button>
+                    </div>
+                    <div class="variable-item">
+                        <input type="text" placeholder="Variable 3" class="variable-input">
+                        <button class="btn delete-variable"><i class="fas fa-trash"></i></button>
+                    </div>
+                    <div class="variable-item">
+                        <input type="text" placeholder="Variable 4" class="variable-input">
+                        <button class="btn delete-variable"><i class="fas fa-trash"></i></button>
+                    </div>
+                    <div class="variable-item">
+                        <input type="text" placeholder="Variable 5" class="variable-input">
+                        <button class="btn delete-variable"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>
+                <button class="btn add-variable" id="add-variable"><i class="fas fa-plus"></i> Add Variable</button>
+            </div>
+            <div class="button-group">
+                <button class="btn secondary" id="back-to-step1"><i class="fas fa-arrow-left"></i> Back</button>
+                <button class="btn primary" id="next-to-step3">Next <i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+
+        <!-- Step 3: Dependencies Configuration -->
+        <div class="step-panel" id="panel3">
+            <h2>Define Variable Dependencies</h2>
+            <div class="dependencies-container">
+                <div class="graph-container">
+                    <img id="graph-image" src="" alt="Variable dependency graph">
+                </div>
+                <div class="dependency-question" id="dependency-question">
+                    <p>Loading dependency questions...</p>
+                </div>
+            </div>
+            <div class="button-group">
+                <button class="btn secondary" id="back-to-step2"><i class="fas fa-arrow-left"></i> Back</button>
+                <button class="btn primary" id="finish-button">Finish <i class="fas fa-check"></i></button>
+            </div>
+        </div>
+        
+        <!-- Completion Panel -->
+        <div class="step-panel" id="panel-complete">
+            <h2>Analysis Complete!</h2>
+            <div class="completion-message">
+                <i class="fas fa-check-circle success-icon"></i>
+                <p>Your variable dependency analysis has been saved successfully.</p>
+                <div class="graph-container final">
+                    <img id="final-graph-image" src="" alt="Final variable dependency graph">
+                </div>
+            </div>
+            <div class="button-group">
+                <button class="btn primary" id="restart-button">Start New Analysis <i class="fas fa-redo"></i></button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal" id="error-modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3><i class="fas fa-exclamation-triangle"></i> Error</h3>
+            <p id="error-message"></p>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
