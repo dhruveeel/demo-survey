@@ -294,4 +294,4 @@ def create_graph_image(G):
 os.makedirs('results', exist_ok=True)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=10000)
